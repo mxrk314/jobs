@@ -91,6 +91,18 @@
     <td id="time12"></td>
     <td id="jobs12"></td>
   </tr>
+  <tr>
+    <td id="time13"></td>
+    <td id="jobs13"></td>
+  </tr>
+  <tr>
+    <td id="time14"></td>
+    <td id="jobs14"></td>
+  </tr>
+  <tr>
+    <td id="time15"></td>
+    <td id="jobs15"></td>
+  </tr>
 </table>
 
 <script>
@@ -109,6 +121,9 @@ function calculateJobs(value) {
     var jobs10 = jobs9 + halfJobs;
     var jobs11 = jobs10 + halfJobs;
     var jobs12 = jobs11 + halfJobs;
+    var jobs13 = jobs12 + halfJobs;
+    var jobs14 = jobs13 + halfJobs;
+    var jobs15 = jobs14 + halfJobs;
 
     document.getElementById("jobs1").textContent = jobs1;
     document.getElementById("jobs2").textContent = jobs2;
@@ -122,6 +137,9 @@ function calculateJobs(value) {
     document.getElementById("jobs10").textContent = jobs10;
     document.getElementById("jobs11").textContent = jobs11;
     document.getElementById("jobs12").textContent = jobs12;
+    document.getElementById("jobs13").textContent = jobs13;
+    document.getElementById("jobs14").textContent = jobs14;
+    document.getElementById("jobs15").textContent = jobs15;
 }
 
 function updateTable() {
@@ -130,37 +148,25 @@ function updateTable() {
     var timeParts = startTime.split(":");
     var hours = parseInt(timeParts[0]);
     var minutes = parseInt(timeParts[1]);
-    var ampm = "AM";
-    
+
     var table = document.getElementById("jobs-table");
     var rows = table.getElementsByTagName("tr");
     
     var currentHour = hours;
     var currentMinutes = minutes;
     
-    for (var i = 1; i <= 12; i++) {
+    for (var i = 1; i <= 15; i++) {
         var cells = rows[i].getElementsByTagName("td");
         if (currentMinutes >= 60) {
             currentHour++;
             currentMinutes -= 60;
         }
-        if (currentHour >= 12) {
-            ampm = "PM";
-            if (currentHour > 12) {
-                currentHour -= 12;
-            }
-        }
-        if (i <= 12) {
-            var timeString = currentHour.toString().padStart(2, '0') + ":" + currentMinutes.toString().padStart(2, '0') + " " + ampm;
-            cells[0].textContent = timeString;
-            currentMinutes += 30;
-            if (currentMinutes === 60) {
-                currentHour++;
-                currentMinutes = 0;
-            }
-        } else {
-            cells[0].textContent = "";
-            cells[1].textContent = "";
+        var timeString = (currentHour % 12 || 12).toString().padStart(2, '0') + ":" + currentMinutes.toString().padStart(2, '0');
+        cells[0].textContent = timeString;
+        currentMinutes += 30;
+        if (currentMinutes === 60) {
+            currentHour++;
+            currentMinutes = 0;
         }
     }
     calculateJobs(jobs);
