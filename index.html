@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time and Job Count Schedule</title>
+<link rel="stylesheet" href="style.css">
+<script>
+function generateSchedule() {
+  var startTime = document.getElementById('time').value;
+  var jobCountInput = parseInt(document.getElementById('jobs').value, 10);
+  var resultsBody = document.getElementById('resultsBody');
+  
+  // Clear previous results
+  resultsBody.innerHTML = '';
+
+  if (!startTime || isNaN(jobCountInput) || jobCountInput <= 0) {
+    alert('Please enter a valid time and a positive number of job count.');
+    return;
+  }
+
+  var time = new Date();
+  var parts = startTime.split(':');
+  time.setHours(parseInt(parts[0], 10), parseInt(parts[1], 10), 0, 0);
+
+  var jobIncrement = jobCountInput / 2; // Increment value is half the job count
+  var jobCount = 0;
+  
+  // Generate table rows for a duration of 7 hours at 30-minute intervals
+  for (var i = 0; i < 14; i++) { // 7 hours / 30 minutes = 14 intervals
+    var minutes = time.getMinutes().toString().padStart(2, '0');
+    var hours = time.getHours();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    var displayHours = ((hours + 11) % 12) + 1; // Convert to 12-hour format
+    displayHours = displayHours.toString().padStart(2, '0'); // Add leading zero if needed
+
+    var row = resultsBody.insertRow();
+    var cellTime = row.insertCell(0);
+    var cellJobCount = row.insertCell(1);
+    cellTime.innerHTML = displayHours + ':' + minutes + ' ' + ampm;
+    cellJobCount.innerHTML = jobCount.toFixed(0);
+
+    jobCount += jobIncrement; // Increment job count
+
+    // Increment time by 30 minutes
+    time.setMinutes(time.getMinutes() + 30);
+  }
+}
+</script>
+</head>
+<body>
+
+<div>
+  <label for="time">Start Time:</label>
+  <input type="time" id="time" name="time" required>
+  <br>
+  <label for="jobs">Job Count:</label>
+  <input type="number" id="jobs" name="jobs" placeholder="Total Job Count" min="1" step="1">
+  <button onclick="generateSchedule()">Generate Schedule</button>
+</div>
+
+<table id="scheduleTable">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Job Count</th>
+    </tr>
+  </thead>
+  <tbody id="resultsBody"></tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+body {
+  text-align: center;
+  background-color: #e0f7fa; /* light blue background */
+  font-family: 'Arial', sans-serif;
+}
+
+table {
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: #e1f5fe; /* lighter blue background for the table */
+}
+
+th, td {
+  border: 1px solid #b3e5fc; /* light blue border */
+  padding: 10px 20px;
+}
+
+th {
+  background-color: #b3e5fc; /* light blue background for headers */
+  color: black; /* Text color for headers set to black */
+}
+
+input[type="time"], input[type="number"] {
+  padding: 10px;
+  border: 1px solid #b3e5fc; /* light blue border */
+  background-color: #e0f7fa; /* light blue background */
+  margin: 5px;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  border: 1px solid #b3e5fc; /* light blue border */
+  background-color: #b3e5fc; /* light blue background for the button */
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: black; /* Black text color for the button */
+}
+
+button:hover {
+  background-color: #82b1ff; /* darker blue color for hover effect */
+}
+
+label {
+  margin-top: 15px;
+}
