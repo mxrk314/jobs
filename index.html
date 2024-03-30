@@ -26,122 +26,143 @@
 
 <h2>Jobs Completion Table</h2>
 
-<table>
+<label for="start-time">Start Time:</label>
+<input type="time" id="start-time" onchange="updateTable()">
+<br><br>
+
+<label for="jobs-to-complete">Jobs To Complete:</label>
+<input type="number" id="jobs-to-complete" oninput="updateTable()" value="50">
+<br><br>
+
+<table id="jobs-table">
   <tr>
-    <th>Hour</th>
+    <th>Time</th>
     <th>Jobs To Complete</th>
   </tr>
   <tr>
-    <td>HR 1 <input type="number" id="hour1" oninput="calculateJobs(this.value)" value="40"></td>
-    <td id="jobs1">40</td>
+    <td id="time1"></td>
+    <td id="jobs1">0</td>
   </tr>
   <tr>
-    <td>HR 1.5</td>
-    <td id="jobs1_5"></td>
-  </tr>
-  <tr class="separator">
-    <td colspan="2"></td>
+    <td id="time2"></td>
+    <td id="jobs2"></td>
   </tr>
   <tr>
-    <td>HR 2</td>
-    <td id="jobs2">80</td>
+    <td id="time3"></td>
+    <td id="jobs3"></td>
   </tr>
   <tr>
-    <td>HR 2.5</td>
-    <td id="jobs2_5"></td>
-  </tr>
-  <tr class="separator">
-    <td colspan="2"></td>
+    <td id="time4"></td>
+    <td id="jobs4"></td>
   </tr>
   <tr>
-    <td>HR 3</td>
-    <td id="jobs3">120</td>
+    <td id="time5"></td>
+    <td id="jobs5"></td>
   </tr>
   <tr>
-    <td>HR 3.5</td>
-    <td id="jobs3_5"></td>
-  </tr>
-  <tr class="separator">
-    <td colspan="2"></td>
+    <td id="time6"></td>
+    <td id="jobs6"></td>
   </tr>
   <tr>
-    <td>HR 4</td>
-    <td id="jobs4">160</td>
+    <td id="time7"></td>
+    <td id="jobs7"></td>
   </tr>
   <tr>
-    <td>HR 4.5</td>
-    <td id="jobs4_5"></td>
-  </tr>
-  <tr class="separator">
-    <td colspan="2"></td>
+    <td id="time8"></td>
+    <td id="jobs8"></td>
   </tr>
   <tr>
-    <td>HR 5</td>
-    <td id="jobs5">200</td>
+    <td id="time9"></td>
+    <td id="jobs9"></td>
   </tr>
   <tr>
-    <td>HR 5.5</td>
-    <td id="jobs5_5"></td>
-  </tr>
-  <tr class="separator">
-    <td colspan="2"></td>
+    <td id="time10"></td>
+    <td id="jobs10"></td>
   </tr>
   <tr>
-    <td>HR 6</td>
-    <td id="jobs6">240</td>
+    <td id="time11"></td>
+    <td id="jobs11"></td>
   </tr>
   <tr>
-    <td>HR 6.5</td>
-    <td id="jobs6_5"></td>
-  </tr>
-  <tr class="separator">
-    <td colspan="2"></td>
-  </tr>
-  <tr>
-    <td>HR 7</td>
-    <td id="jobs7">280</td>
-  </tr>
-  <tr>
-    <td>HR 7.5</td>
-    <td id="jobs7_5"></td>
-  </tr>
-  <tr class="separator">
-    <td colspan="2"></td>
-  </tr>
-  <tr>
-    <td>HR 8</td>
-    <td id="jobs8">320</td>
-  </tr>
-  <tr>
-    <td>HR 8.5</td>
-    <td id="jobs8_5"></td>
-  </tr>
-  <tr class="separator">
-    <td colspan="2"></td>
+    <td id="time12"></td>
+    <td id="jobs12"></td>
   </tr>
 </table>
 
 <script>
 function calculateJobs(value) {
     var jobs = parseInt(value);
-    document.getElementById("jobs1").textContent = jobs;
-    document.getElementById("jobs2").textContent = jobs * 2;
-    document.getElementById("jobs3").textContent = jobs * 3;
-    document.getElementById("jobs4").textContent = jobs * 4;
-    document.getElementById("jobs5").textContent = jobs * 5;
-    document.getElementById("jobs6").textContent = jobs * 6;
-    document.getElementById("jobs7").textContent = jobs * 7;
-    document.getElementById("jobs8").textContent = jobs * 8;
+    var halfJobs = Math.ceil(jobs / 2); // Half of the jobs to complete
+    var jobs1 = 0; // First time always has 0 jobs
+    var jobs2 = jobs1 + halfJobs; // Calculate jobs for 30-minute interval
+    var jobs3 = jobs2 + halfJobs; // Calculate jobs for next hour
+    var jobs4 = jobs3 + halfJobs;
+    var jobs5 = jobs4 + halfJobs;
+    var jobs6 = jobs5 + halfJobs;
+    var jobs7 = jobs6 + halfJobs;
+    var jobs8 = jobs7 + halfJobs;
+    var jobs9 = jobs8 + halfJobs;
+    var jobs10 = jobs9 + halfJobs;
+    var jobs11 = jobs10 + halfJobs;
+    var jobs12 = jobs11 + halfJobs;
 
-    document.getElementById("jobs1_5").textContent = jobs * 1.5;
-    document.getElementById("jobs2_5").textContent = jobs * 2.5;
-    document.getElementById("jobs3_5").textContent = jobs * 3.5;
-    document.getElementById("jobs4_5").textContent = jobs * 4.5;
-    document.getElementById("jobs5_5").textContent = jobs * 5.5;
-    document.getElementById("jobs6_5").textContent = jobs * 6.5;
-    document.getElementById("jobs7_5").textContent = jobs * 7.5;
-    document.getElementById("jobs8_5").textContent = jobs * 8.5;
+    document.getElementById("jobs1").textContent = jobs1;
+    document.getElementById("jobs2").textContent = jobs2;
+    document.getElementById("jobs3").textContent = jobs3;
+    document.getElementById("jobs4").textContent = jobs4;
+    document.getElementById("jobs5").textContent = jobs5;
+    document.getElementById("jobs6").textContent = jobs6;
+    document.getElementById("jobs7").textContent = jobs7;
+    document.getElementById("jobs8").textContent = jobs8;
+    document.getElementById("jobs9").textContent = jobs9;
+    document.getElementById("jobs10").textContent = jobs10;
+    document.getElementById("jobs11").textContent = jobs11;
+    document.getElementById("jobs12").textContent = jobs12;
 }
+
+function updateTable() {
+    var startTime = document.getElementById("start-time").value;
+    var jobs = document.getElementById("jobs-to-complete").value;
+    var timeParts = startTime.split(":");
+    var hours = parseInt(timeParts[0]);
+    var minutes = parseInt(timeParts[1]);
+    var ampm = "AM";
+    
+    var table = document.getElementById("jobs-table");
+    var rows = table.getElementsByTagName("tr");
+    
+    var currentHour = hours;
+    var currentMinutes = minutes;
+    
+    for (var i = 1; i <= 12; i++) {
+        var cells = rows[i].getElementsByTagName("td");
+        if (currentMinutes >= 60) {
+            currentHour++;
+            currentMinutes -= 60;
+        }
+        if (currentHour >= 12) {
+            ampm = "PM";
+            if (currentHour > 12) {
+                currentHour -= 12;
+            }
+        }
+        if (i <= 12) {
+            var timeString = currentHour.toString().padStart(2, '0') + ":" + currentMinutes.toString().padStart(2, '0') + " " + ampm;
+            cells[0].textContent = timeString;
+            currentMinutes += 30;
+            if (currentMinutes === 60) {
+                currentHour++;
+                currentMinutes = 0;
+            }
+        } else {
+            cells[0].textContent = "";
+            cells[1].textContent = "";
+        }
+    }
+    calculateJobs(jobs);
+}
+
+window.onload = updateTable;
 </script>
 
 </body>
