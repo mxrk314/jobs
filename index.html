@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jobs Completion Table</title>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .separator {
+        border-top: 2px solid #000000;
+    }
+</style>
+</head>
+<body>
+
+<h2>Jobs Completion Table</h2>
+
+<table>
+  <tr>
+    <th>Hour</th>
+    <th>Jobs Completed</th>
+  </tr>
+  <tr>
+    <td>HR 1 <input type="number" id="hour1" oninput="calculateJobs(this.value)" value="40"></td>
+    <td id="jobs1">40</td>
+  </tr>
+  <tr>
+    <td>HR 1.5</td>
+    <td id="jobs1_5"></td>
+  </tr>
+  <tr class="separator">
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td>HR 2</td>
+    <td id="jobs2">80</td>
+  </tr>
+  <tr>
+    <td>HR 2.5</td>
+    <td id="jobs2_5"></td>
+  </tr>
+  <tr class="separator">
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td>HR 3</td>
+    <td id="jobs3">120</td>
+  </tr>
+  <tr>
+    <td>HR 3.5</td>
+    <td id="jobs3_5"></td>
+  </tr>
+  <tr class="separator">
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td>HR 4</td>
+    <td id="jobs4">160</td>
+  </tr>
+  <tr>
+    <td>HR 4.5</td>
+    <td id="jobs4_5"></td>
+  </tr>
+  <tr class="separator">
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td>HR 5</td>
+    <td id="jobs5">200</td>
+  </tr>
+  <tr>
+    <td>HR 5.5</td>
+    <td id="jobs5_5"></td>
+  </tr>
+  <tr class="separator">
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td>HR 6</td>
+    <td id="jobs6">240</td>
+  </tr>
+  <tr>
+    <td>HR 6.5</td>
+    <td id="jobs6_5"></td>
+  </tr>
+  <tr class="separator">
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td>HR 7</td>
+    <td id="jobs7">280</td>
+  </tr>
+  <tr>
+    <td>HR 7.5</td>
+    <td id="jobs7_5"></td>
+  </tr>
+  <tr class="separator">
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td>HR 8</td>
+    <td id="jobs8">320</td>
+  </tr>
+  <tr>
+    <td>HR 8.5</td>
+    <td id="jobs8_5"></td>
+  </tr>
+  <tr class="separator">
+    <td colspan="2"></td>
+  </tr>
+</table>
+
+<script>
+function calculateJobs(value) {
+    var jobs = parseInt(value);
+    document.getElementById("jobs1").textContent = jobs;
+    document.getElementById("jobs2").textContent = jobs * 2;
+    document.getElementById("jobs3").textContent = jobs * 3;
+    document.getElementById("jobs4").textContent = jobs * 4;
+    document.getElementById("jobs5").textContent = jobs * 5;
+    document.getElementById("jobs6").textContent = jobs * 6;
+    document.getElementById("jobs7").textContent = jobs * 7;
+    document.getElementById("jobs8").textContent = jobs * 8;
+
+    document.getElementById("jobs1_5").textContent = jobs * 1.5;
+    document.getElementById("jobs2_5").textContent = jobs * 2.5;
+    document.getElementById("jobs3_5").textContent = jobs * 3.5;
+    document.getElementById("jobs4_5").textContent = jobs * 4.5;
+    document.getElementById("jobs5_5").textContent = jobs * 5.5;
+    document.getElementById("jobs6_5").textContent = jobs * 6.5;
+    document.getElementById("jobs7_5").textContent = jobs * 7.5;
+    document.getElementById("jobs8_5").textContent = jobs * 8.5;
+}
+</script>
+
+</body>
+</html>
